@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfInventory.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfInventory"
+        mc:Ignorable="d"
+        Title="System Inwentaryzacji Biura" Height="500" Width="800" Background="#F4F4F4">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Margin="0,0,10,0">
+            <Label Content="Szukaj przedmiotu (po nazwie):" FontWeight="Bold"/>
+            <TextBox x:Name="TxtSearch" Margin="0,0,0,10" TextChanged="TxtSearch_TextChanged" Height="25"/>
+
+            <DataGrid x:Name="DgInventory" AutoGenerateColumns="False" IsReadOnly="True" 
+                      Height="330" SelectionChanged="DgInventory_SelectionChanged"
+                      Background="White" AlternatingRowBackground="#F9F9F9">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="60"/>
+                    <DataGridTextColumn Header="Nazwa" Binding="{Binding Nazwa}" Width="*"/>
+                    <DataGridTextColumn Header="Ilość" Binding="{Binding Ilosc}" Width="50"/>
+                    <DataGridTextColumn Header="Kategoria" Binding="{Binding Kategoria}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </StackPanel>
+
+        <Border Grid.Column="1" Background="White" CornerRadius="5" Padding="15" BorderBrush="#DDD" BorderThickness="1">
+            <StackPanel>
+                <Label Content="SZCZEGÓŁY PRZEDMIOTU" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,0,0,15"/>
+
+                <Label Content="Nazwa:"/>
+                <TextBox x:Name="InpNazwa" Margin="0,0,0,10"/>
+
+                <Label Content="Kategoria:"/>
+                <ComboBox x:Name="InpKat" Margin="0,0,0,10" SelectedIndex="0" SelectionChanged="InpKat_SelectionChanged">
+                    <ComboBox.Background>
+                        <LinearGradientBrush EndPoint="0,1">
+                            <GradientStop Color="#FFF0F0F0"/>
+                            <GradientStop Color="#FFE81D1D" Offset="1"/>
+                        </LinearGradientBrush>
+                    </ComboBox.Background>
+                    <ComboBoxItem Content="Elektronika"/>
+                    <ComboBoxItem Content="Meble Biurowe"/>
+                    <ComboBoxItem Content="Akcesoria"/>
+                </ComboBox>
+
+                <Label Content="Ilość:"/>
+                <TextBox x:Name="InpIlosc" Margin="0,0,0,10"/>
+
+                <StackPanel Orientation="Vertical" Margin="0,20,0,0">
+                    <Button Content="DODAJ NOWY" Click="BtnAdd_Click" Height="35" Margin="0,0,0,5" Background="#4CAF50" Foreground="White" FontWeight="Bold"/>
+                    <Button Content="ZAPISZ ZMIANY" Click="BtnSave_Click" Height="35" Margin="0,0,0,5" Background="#2196F3" Foreground="White"/>
+                    <Button Content="USUŃ WYBRANY" Click="BtnDelete_Click" Height="35" Background="#F44336" Foreground="White"/>
+                    <Button Content="GENERUJ RAPORT (.TXT)" Click="BtnExport_Click" Height="35" Margin="0,5,0,0" Background="#607D8B" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
