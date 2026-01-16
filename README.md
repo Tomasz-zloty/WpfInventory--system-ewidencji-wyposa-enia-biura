@@ -1,30 +1,66 @@
-System Zarządzania Inwentarzem Biurowym
+# 📦 System Zarządzania Inwentarzem Biurowym
 
+**Projekt zaliczeniowy z programowania w technologii .NET/WPF**
 
-Autor: Tomasz Złotkowski
+> Aplikacja desktopowa zaprojektowana do efektywnego prowadzenia ewidencji wyposażenia biura. Pozwala na kompleksowe zarządzanie sprzętem IT, meblami oraz akcesoriami biurowymi, zapewniając trwałość danych i intuicyjną obsługę.
 
- 1. Opis projektu
-Aplikacja została przygotowana jako projekt zaliczeniowy. Jej głównym celem jest prowadzenie ewidencji wyposażenia biura, takiego jak sprzęt IT, meble czy akcesoria biurowe. 
-Program pozwala na pełne zarządzanie danymi (dodawanie, wyświetlanie, edycję i usuwanie) oraz zapewnia ich trwałość dzięki zapisowi do plików lokalnych w formacie JSON.
+---
 
- 2. Główne funkcjonalności
-* Zarządzanie przedmiotami: Użytkownik może dodawać nowe pozycje, edytować istniejące oraz usuwać te, które nie są już potrzebne.
-* Bezpieczeństwo operacji: Przy próbie usunięcia przedmiotu aplikacja wyświetla okno z zapytaniem o potwierdzenie. Zapobiega to przypadkowej utracie danych przez błędne kliknięcie.
-* Wyszukiwarka: Zaimplementowałem funkcję filtrowania listy w czasie rzeczywistym. Tabela aktualizuje się automatycznie już w trakcie wpisywania nazwy przedmiotu.
-* System raportowania: Program posiada funkcję generowania czytelnego raportu tekstowego (plik .txt). Po utworzeniu raportu system automatycznie otwiera go w domyślnym edytorze (np. Notatniku).
-* Trwałość danych: Do składowania informacji wykorzystałem bibliotekę Newtonsoft.Json. Dzięki temu baza danych jest lekka, czytelna  i nie wymaga instalowania dodatkowych serwerów bazy danych.
-* Walidacja: Aplikacja sprawdza poprawność wprowadzanych danych, np. blokuje możliwość dodania przedmiotu bez nazwy lub z ujemną ilością, po klinięciu usuń pyta czy na pewno użytkownik checo to zrobić.
+## 🏛️ Struktura Projektu
 
- 3. Technologie i biblioteki
-* WPF / XAML – wykorzystane do stworzenia interfejsu użytkownika.
-* C# / .NET – logika biznesowa programu.
-* Newtonsoft.Json – biblioteka do obsługi plików bazy danych.
-* System.Diagnostics – wykorzystane do automatycznego otwierania wygenerowanych raportów.
+Aplikacja opiera się na architekturze umożliwiającej separację logiki biznesowej od interfejsu użytkownika.
 
- 4. Instrukcja uruchomienia
-1. Pobierz kod źródłowy i otwórz plik **WpfInventory.sln** w środowisku Visual Studio.
-2. Przy pierwszym uruchomieniu system NuGet powinien automatycznie pobrać bibliotekę Newtonsoft.Json.
-3. Uruchom program klawiszem **F5**.
-4. Plik bazy danych (`inventory.json`) oraz generowane raporty tekstowe znajdują się w folderze projektu: `bin/Debug`.
+| Komponent             | Opis Funkcjonalny                                                                                                 |
+| --------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **Interfejs (UI)** | Okno główne z listą przedmiotów, formularzami edycji oraz dynamicznym systemem filtrowania.                        |
+| **Baza Danych (JSON)**| Plik `inventory.json` przechowujący stan inwentarza w ustrukturyzowanym formacie tekstowym.                        |
+| **Moduł Raportów** | Silnik generujący zestawienia w formacie `.txt`, pozwalający na szybki eksport danych do dokumentu zewnętrznego. |
+| **Logika Walidacji** | System sprawdzający poprawność wprowadzanych danych (ilość, nazwa) przed ich trwałym zapisem.                     |
 
+---
 
+## 🛠️ Stos Technologiczny
+
+Projekt został zbudowany przy użyciu nowoczesnych narzędzi platformy .NET.
+
+| Technologia           | Opis i zastosowanie                                                                               |
+| --------------------- | ------------------------------------------------------------------------------------------------- |
+| 🖼️ **WPF / XAML** | Framework wykorzystany do budowy nowoczesnego i przejrzystego interfejsu użytkownika.              |
+| ⚙️ **C# / .NET** | Główny język programowania obsługujący logikę biznesową i operacje na danych.                     |
+| 📦 **Newtonsoft.Json**| Biblioteka NuGet do serializacji danych, zapewniająca lekką i wydajną bazę danych w pliku JSON.   |
+| 📂 **System.IO** | Przestrzeń nazw odpowiedzialna za fizyczny zapis i odczyt plików inwentarza oraz raportów.        |
+
+---
+
+## ✨ Kluczowe Funkcjonalności
+
+* **Pełny moduł CRUD:** Użytkownik ma możliwość dodawania, wyświetlania, edytowania oraz trwałego usuwania przedmiotów z inwentarza.
+* **Wyszukiwanie Real-Time:** Zaimplementowana funkcja filtrowania listy w czasie rzeczywistym – tabela aktualizuje się dynamicznie podczas wpisywania nazwy.
+* **Bezpieczeństwo Danych:** System potwierdzeń (MessageBox) przy próbie usunięcia elementu zapobiega przypadkowej utracie informacji.
+* **Automatyczne Raportowanie:** Generowanie raportu `.txt` jednym kliknięciem, który po utworzeniu jest automatycznie otwierany w systemowym edytorze (np. Notatnik).
+* **Walidacja Formularzy:** Blokada dodawania pustych rekordów lub ujemnych stanów magazynowych, co gwarantuje spójność bazy danych.
+
+---
+## 🚀 Uruchomienie Projektu
+
+Aplikacja jest gotowa do uruchomienia po sklonowaniu repozytorium i otwarciu w środowisku Visual Studio.
+
+## 📂 Struktura Plików
+
+WpfInventory/
+├── 📄 App.xaml            # Główny plik definicji aplikacji (zasoby globalne)
+├── 📄 App.xaml.cs         # Logika startowa aplikacji
+├── 📄 AssemblyInfo.cs     # Informacje o wersji i metadane zestawu
+├── 📄 MainWindow.xaml     # Definicja interfejsu użytkownika (widok główny)
+├── 📄 MainWindow.xaml.cs  # Logika biznesowa obsługująca zdarzenia interfejsu
+├── 📄 Przedmiot.cs        # Klasa modelu danych (definicja obiektu inwentarza)
+└── 📄 WpfInventory.csproj # Plik projektu Visual Studio (konfiguracja kompilacji)
+
+### 🌐 Instrukcja krok po kroku
+1. Pobierz kod źródłowy i otwórz plik **WpfInventory.sln**.
+2. Poczekaj na automatyczne przywrócenie pakietów NuGet (**Newtonsoft.Json**).
+3. Naciśnij klawisz **F5**, aby skompilować i uruchomić aplikację.
+4. Plik bazy danych oraz raporty znajdziesz po pierwszym uruchomieniu w folderze: `bin/Debug`.
+
+---
+**Autor:** Tomasz Złotkowski
