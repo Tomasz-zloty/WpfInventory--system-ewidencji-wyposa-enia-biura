@@ -47,14 +47,19 @@ Aplikacja jest gotowa do uruchomienia po sklonowaniu repozytorium i otwarciu w �
 
 ## 📂 Struktura Plików
 
+```
 WpfInventory/
-├── 📄 App.xaml            # Główny plik definicji aplikacji (zasoby globalne)
-├── 📄 App.xaml.cs         # Logika startowa aplikacji
-├── 📄 AssemblyInfo.cs     # Informacje o wersji i metadane zestawu
-├── 📄 MainWindow.xaml     # Definicja interfejsu użytkownika (widok główny)
-├── 📄 MainWindow.xaml.cs  # Logika biznesowa obsługująca zdarzenia interfejsu
-├── 📄 Przedmiot.cs        # Klasa modelu danych (definicja obiektu inwentarza)
-└── 📄 WpfInventory.csproj # Plik projektu Visual Studio (konfiguracja kompilacji)
+├── 📄 App.xaml            
+├── 📄 App.xaml.cs         
+├── 📄 AssemblyInfo.cs     
+├── 📄 MainWindow.xaml     
+├── 📄 MainWindow.xaml.cs 
+├── 📄 Przedmiot.cs       
+└── 📄 WpfInventory.csproj 
+
+```
+
+
 
 ### 🌐 Instrukcja krok po kroku
 1. Pobierz kod źródłowy i otwórz plik **WpfInventory.sln**.
